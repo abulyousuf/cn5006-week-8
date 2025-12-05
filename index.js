@@ -140,3 +140,15 @@ person_doc
   .catch(function (error) {
     console.log(error);
   });
+
+// Update Documents for a given criteria
+person_doc
+  .updateMany({ Gender: "Female" }, { $set: { Salary: 5555 } })
+  .exec()
+  .then((docs) => {
+    console.log("Update Complete");
+    console.log(docs);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
