@@ -74,3 +74,20 @@ person_doc
   .catch(function (error) {
     console.log(error); // Failure
   });
+
+// Find all the documents in the collection
+person_doc
+  .find({}) // Find all users
+  .sort({ Salary: 1 }) // Sort by Salary in Ascending order
+  .select("name Salary age") // Select only 'name', 'Salary', and 'age' fields
+  .limit(10) // Limit to 10 results
+  .exec() // Execute the query
+  .then((docs) => {
+    console.log("Showing multiple documents:");
+    docs.forEach(function (Doc) {
+      console.log(Doc.age, Doc.name);
+    });
+  })
+  .catch((err) => {
+    console.error(err);
+  });
