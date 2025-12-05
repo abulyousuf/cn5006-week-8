@@ -91,3 +91,30 @@ person_doc
   .catch((err) => {
     console.error(err);
   });
+
+// Define Filter Variable
+const givenage = 15;
+
+// Find with Criteria
+person_doc
+  .find({
+    Gender: "Female",
+    age: { $gte: givenage },
+  })
+  // Sort by Salary in ascending order (1)
+  .sort({ Salary: 1 })
+  // Return only name, Salary, and age
+  .select("name Salary age")
+  // Limit Results
+  .limit(10)
+  // Execute Query
+  .exec()
+  .then((docs) => {
+    console.log(`Showing Matching Documents (Females, Age >= ${givenage}):`);
+    docs.forEach(function (Doc) {
+      console.log(`Age: ${Doc.age}, Name: ${Doc.name}`);
+    });
+  })
+  .catch((err) => {
+    console.error(err);
+  });
