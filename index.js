@@ -118,3 +118,14 @@ person_doc
   .catch((err) => {
     console.error(err);
   });
+
+// Count Documents
+person_doc
+  .countDocuments()
+  .exec()
+  .then((count) => {
+    console.log("Total documents Count:", count);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
