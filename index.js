@@ -129,3 +129,14 @@ person_doc
   .catch((err) => {
     console.error(err);
   });
+
+// Delete Documents for a given criteria
+person_doc
+  .deleteMany({ age: { $gte: 25 } })
+  .exec()
+  .then((docs) => {
+    console.log("Deleted documents are:", docs);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
